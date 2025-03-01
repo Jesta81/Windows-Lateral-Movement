@@ -9,13 +9,13 @@
 
 - Open Remote Desktop Connection client (Windows)
 
-	
-	C:\> mstsc.exe
+	C:\> mstsc.exe 
 
 - Open Remote Desktop Connection client in Restricted Admin mode 
 
-	
-	C:\> mstsc.exe /restrictedAdmin
+
+	C:\> mstsc.exe /restrictedAdmin 
+
 	
 
 - Query, Disable, and Enable DisableRestrictedAdmin value in LSA settings. 
