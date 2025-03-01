@@ -7,6 +7,18 @@
 
 ### RDP Commands
 
+- xfreerdp commands
+
+	```
+	
+	$ xfreerdp /u:'USER' /p:'PASSWORD' /v:'IP ADDRESS' /dynamic-resolution /drive:kali,/home/kali/Tools /cert:ignore 
+	
+	$ xfreerdp /u:'USER' /p:'PASSWORD' /v:'IP ADDRESS' /dynamic-resolution /drive:tmp,/home/kali/Tools /bpp:8 /compression -themes -wallpaper /clipboard /audio-mode:0 /auto-reconnect -glyph-cache
+	
+	$ proxychains -q xfreerdp /u:'USER' /pth:'HASH' /d:inlanefreight.local /v:'IP ADDRESS
+	
+	```
+
 - Open Remote Desktop Connection client (Windows)
 
 	`C:\> mstsc.exe` 
